@@ -36,7 +36,7 @@ export default function Layout() {
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await fetch('http://localhost:5000/ui_modules', {
+      const response = await fetch('http://taskmate.dk/api/ui_modules', {
         mode: 'cors',
       });
       const data = await response.json();
