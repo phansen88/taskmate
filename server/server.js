@@ -21,7 +21,7 @@ app.use(cors());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '.../build')));
 }
-app.get('/admin/dictionary', async (req, res) => {
+app.get('/api/admin/dictionary', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
     const data = await Admin.getDictionary();
@@ -31,7 +31,7 @@ app.get('/admin/dictionary', async (req, res) => {
   }
 });
 
-app.get('/table/:tablename', async (req, res) => {
+app.get('/api/table/:tablename', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
     const data = await Incident.getIncidents(req.query);
@@ -40,7 +40,7 @@ app.get('/table/:tablename', async (req, res) => {
     res.status(500).send();
   }
 });
-app.get('/home', async (req, res) => {
+app.get('/api/users', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
     const user = await Users.getUsers();
@@ -49,7 +49,7 @@ app.get('/home', async (req, res) => {
     res.status(500).send();
   }
 });
-app.get('/ui_modules', async (req, res) => {
+app.get('/api/ui_modules', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
     const user = await UIModules.getUIModules();
@@ -67,7 +67,7 @@ app.post('/api/users', async (req, res) => {
     res.status(500).send();
   }
 });
-app.get('/casefiles', async (req, res) => {
+app.get('/api/casefiles', async (req, res) => {
   try {
     const token2 = wsseTEst.wsseHeader(
       process.env.PENNEO_KEY,

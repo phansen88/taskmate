@@ -24,7 +24,7 @@ export default function Users() {
 
       // Await make wait until that
       // promise settles and return its reult
-      const response = await fetch('http://localhost:5000/home', {
+      const response = await fetch('http://taskmate.dk/api/users', {
         mode: 'cors',
       });
       const data = await response.json();

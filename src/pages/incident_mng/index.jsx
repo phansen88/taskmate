@@ -66,7 +66,7 @@ export default function IncidentManagement() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       // eslint-disable-next-line no-template-curly-in-string,
       const response = await fetch(
-        `http://localhost:5000/table/incident${query}`,
+        `http://taskmate.dk/api/table/incident${query}`,
         {
           mode: 'cors',
         }
