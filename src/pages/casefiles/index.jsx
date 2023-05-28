@@ -56,7 +56,7 @@ import {
       const getCaseFiles = async () => {
         // Await make wait until that
         // promise settles and return its reult
-        const response = await fetch('http://taskmate.dk/api/casefiles', {
+        const response = await fetch('/api/casefiles', {
           mode: 'cors',
         });
         const data = await response.json();
