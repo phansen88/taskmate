@@ -1,3 +1,4 @@
+const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 import { useEffect, useState } from 'react';
 /*
 import { Fragment } from 'react';
@@ -24,7 +25,7 @@ export default function Users() {
 
       // Await make wait until that
       // promise settles and return its reult
-      const response = await fetch('/api/users', {
+      const response = await fetch(`${API_ENDPOINT}/api/users`, {
         mode: 'cors',
       });
       const data = await response.json();

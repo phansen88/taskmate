@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-no-comment-textnodes */
+const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   NavLink,
   Outlet,
 } from 'react-router-dom';
@@ -36,7 +35,7 @@ export default function Layout() {
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await fetch('/api/ui_modules', {
+      const response = await fetch(`${API_ENDPOINT}/api/ui_modules`, {
         mode: 'cors',
       });
       const data = await response.json();

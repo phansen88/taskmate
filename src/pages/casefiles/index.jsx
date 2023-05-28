@@ -1,4 +1,5 @@
 /* eslint-disable no-else-return */
+const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 import {
     Outlet,
   } from 'react-router-dom';
@@ -56,7 +57,7 @@ import {
       const getCaseFiles = async () => {
         // Await make wait until that
         // promise settles and return its reult
-        const response = await fetch('/api/casefiles', {
+        const response = await fetch(`${API_ENDPOINT}/api/casefiles`, {
           mode: 'cors',
         });
         const data = await response.json();

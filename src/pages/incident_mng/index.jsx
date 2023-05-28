@@ -1,4 +1,5 @@
 /* eslint-disable no-else-return */
+const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 import { useEffect, useState } from 'react';
 import { useSearchParams, Outlet } from 'react-router-dom';
 import * as moment from 'moment';
@@ -65,7 +66,7 @@ export default function IncidentManagement() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       // eslint-disable-next-line no-template-curly-in-string,
       const response = await fetch(
-        `/api/table/incident${query}`,
+        `${API_ENDPOINT}/api/table/incident${query}`,
         {
           mode: 'cors',
         }
