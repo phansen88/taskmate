@@ -14,7 +14,7 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-async function getIncidents(query) {
+async function getITProblems(query) {
   let client;
   let queryString = '';
   try {
@@ -31,14 +31,15 @@ async function getIncidents(query) {
     } else {
       queryString = Object.entries(query)
         .map((k) => {
+          console.log(k[1]);
           if (k[1] === 'ISNULL') {
             // eslint-disable-next-line prefer-template
-            return "i." + k[0] + ' IS NULL';
+            return k[0] + ' IS NULL';
           }
           // eslint-disable-next-line prefer-template
-          return "i." + k[0] + ` = '` + k[1] + `'`;
+          return k[0] + ` = '` + k[1] + `'`;
         })
-        .join(`' AND i.`);
+        .join(`' AND `);
 
       queryString = `WHERE ${queryString}`;
     }
@@ -46,15 +47,8 @@ async function getIncidents(query) {
 
     client = await pool.connect();
     const data = await client.query(
-      `SELECT i.*, ag.name AS assignment_group_dv
-      FROM db1.it_incidents AS i
-      JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid
-      ${queryString} ORDER BY i.created DESC`
+      `SELECT * FROM db1.it_problems ${queryString} ORDER BY created DESC`
     );
-    console.log(`SELECT i.*, ag.name AS assignment_group_dv
-    FROM db1.it_incidents AS i
-    JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid
-    ${queryString} ORDER BY i.created DESC`);
     return data.rows;
   } catch (err) {
     console.log(err);
@@ -65,5 +59,5 @@ async function getIncidents(query) {
 }
 
 module.exports = {
-  getIncidents,
+  getITProblems,
 };

@@ -21,7 +21,7 @@ async function getUIModules() {
   try {
     client = await pool.connect();
     const data = await client.query(
-      'SELECT * FROM db1.ui_module ORDER BY ui_module.parent DESC, ui_module.order ASC'
+      'SELECT * FROM db1.ui_modules ORDER BY ui_modules.parent DESC, ui_modules.order ASC'
     );
     // eslint-disable-next-line prefer-const
     let records = [];

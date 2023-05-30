@@ -48,8 +48,8 @@ function getStatus(value) {
   return '';
 }
 
-export default function IncidentManagement() {
-  const [incidents, setIncidents] = useState([]);
+export default function ITProblems() {
+  const [problems, setProblems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   let query = '';
@@ -59,14 +59,14 @@ export default function IncidentManagement() {
   }
   console.log('Before DB Query' + query);
   useEffect(() => {
-    const getCaseFiles = async () => {
+    const getProblems = async () => {
       // Await make wait until that
       // promise settles and return its reult
 
       // eslint-disable-next-line react-hooks/rules-of-hooks
       // eslint-disable-next-line no-template-curly-in-string,
       const response = await fetch(
-        `${API_ENDPOINT}/api/table/incident${query}`,
+        `${API_ENDPOINT}/api/it_problems${query}`,
         {
           mode: 'cors',
         }
@@ -75,11 +75,11 @@ export default function IncidentManagement() {
 
       console.log(data);
       // After fetching data stored it in posts state.
-      setIncidents(data);
+      setProblems(data);
     };
 
     // Call the function
-    getCaseFiles();
+    getProblems();
   }, [query]);
   return (
     <>
@@ -100,13 +100,7 @@ export default function IncidentManagement() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Short description
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Description
+                      Problem statement
                     </th>
                     <th
                       scope="col"
@@ -118,13 +112,19 @@ export default function IncidentManagement() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Assigned to
+                      Workaround
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
                       Assignment group
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Assigned to
                     </th>
                     <th
                       scope="col"
@@ -138,18 +138,21 @@ export default function IncidentManagement() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {incidents.map((incident) => (
-                    <tr key={incident.uid}>
+                  {problems.map((problem) => (
+                    <tr key={problem.uid}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <div className="text-sm font-medium text-gray-900">
-                          {incident.number}
+                          {problem.number}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {problem.short_description}
+                            </div>
                             <div className="text-sm text-gray-500">
-                              {incident.short_description}
+                              {problem.description}
                             </div>
                           </div>
                         </div>
@@ -158,16 +161,7 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {incident.description}
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">  
-                        <div className="flex items-center">
-                          <div className="ml-4">
-                            <div className="text-sm text-gray-500">
-                              {incident.state}
+                              {problem.description}
                             </div>
                           </div>
                         </div>
@@ -176,7 +170,7 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {incident.assigned_to}
+                              {problem.assigned_to}
                             </div>
                           </div>
                         </div>
@@ -185,26 +179,29 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {incident.assignment_group_dv}
+                              {problem.assignment_group}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {incident.sensitiveData ? 'Sensitive' : ''}
+                          {problem.sensitiveData ? 'Sensitive' : ''}
                         </div>
                         <div className="text-sm text-gray-500">
-                          {incident.created !== undefined
-                            ? `${moment(incident.created)
+                          
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {problem.created !== undefined
+                            ? `${moment(problem.created)
                                 .utc()
                                 .format('DD-MM-YYYY HH:mm:SS')} UTC`
                             : ''}
-                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
-                          href={`/it_incidents/${incident.uid}`}
+                          href="/"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
                           Edit

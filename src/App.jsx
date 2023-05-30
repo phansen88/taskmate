@@ -5,6 +5,7 @@ import EmployeeCatalog from './pages/employee_catalog';
 import CaseFiles from './pages/casefiles';
 import IncidentManagement from './pages/incident_mng';
 import Users from './pages/users';
+import ITProblems from './pages/it_problems';
 
 export default function App() {
   return (
@@ -12,12 +13,13 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Landingpage />} />
-          <Route path="users" element={<Users />} />
+          <Route path="/users" element={<Users />} />
           <Route path="/table/:incident/*" element={<IncidentManagement />} />
-          <Route path="employee_catalog" element={<EmployeeCatalog />} />
-          <Route exact path="casefiles">
+          <Route path="/employee_catalog" element={<EmployeeCatalog />} />
+          <Route exact path="/casefiles">
             <Route exact index element={<CaseFiles />} />
           </Route>
+          <Route path="/it_problems/*" element={<ITProblems />} />
         </Route>
       </Routes>
     </Router>

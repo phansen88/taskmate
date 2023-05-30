@@ -8,6 +8,7 @@ const axios = require('axios').default;
 const wsseTEst = require('./middleware/wsse-test');
 const Users = require('./models/Users');
 const Incident = require('./models/Incident');
+const Problems = require('./models/ITProblems');
 const UIModules = require('./models/UIModules');
 const Admin = require('./models/Admin');
 
@@ -28,6 +29,15 @@ app.get('/api/admin/dictionary', async (req, res) => {
     res.send(data);
   } catch (error) {
     res.status(500).send();
+  }
+});
+app.get('/api/it_problems', async (req, res) => {
+  // res.set('Access-Control-Allow-Origin', '*');
+  try {
+    const problems = await Problems.getITProblems(req.query);
+    res.send(problems);
+  } catch (error) {
+    res.status(500).send(); 
   }
 });
 
