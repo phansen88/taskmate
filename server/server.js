@@ -11,6 +11,7 @@ const Incident = require('./models/Incident');
 const Problems = require('./models/ITProblems');
 const UIModules = require('./models/UIModules');
 const Admin = require('./models/Admin');
+const AssignmentGroups = require('./models/AssignmentGroups');
 
 const app = express(); // create express app
 const port = process.env.PORT || 5000;
@@ -22,6 +23,15 @@ app.use(cors());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '.../build')));
 }
+app.get('/api/assignment_groups', async (req, res) => {
+  // res.set('Access-Control-Allow-Origin', '*');
+  try {
+    const data = await AssignmentGroups.getAssignmentGroups(req.query);
+    res.send(data);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 app.get('/api/admin/dictionary', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
@@ -57,6 +67,16 @@ app.get('/api/users', async (req, res) => {
     res.send(user);
   } catch (error) {
     res.status(500).send();
+  }
+});
+app.get('/api/users/:uid', async (req, res) => {
+  const uid = req.params.uid; // Extract the UID from the URL parameters
+  
+  try {
+    const user = await Users.getUser(uid); // Call the getUser method with the UID asynchronously
+    res.send(user); // Send the user data as the response
+  } catch (error) {
+    res.status(500).send(); // Handle any errors and send a 500 server error response
   }
 });
 app.get('/api/ui_modules', async (req, res) => {

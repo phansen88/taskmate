@@ -28,6 +28,21 @@ async function getUsers() {
   }
 }
 
+async function getUser(uid) {
+  let client;
+  try {
+    client = await pool.connect();
+    console.log(`SELECT * FROM db1.users WHERE uid = ${uid} ORDER BY uid ASC`);
+    const res = await client.query(`SELECT * FROM db1.users WHERE uid = '${uid}' ORDER BY uid ASC`);
+    return res.rows;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
 async function createUser(data) {
   let client;
   try {
@@ -47,5 +62,6 @@ async function createUser(data) {
 
 module.exports = {
   getUsers,
+  getUser,
   createUser,
 };
