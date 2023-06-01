@@ -46,11 +46,15 @@ async function getIncidents(query) {
 
     client = await pool.connect();
     const data = await client.query(
-      `SELECT i.*, ag.name AS assignment_group_dv
+      `SELECT i.*, ag.name AS assignment_group_dv, cc.label AS state_dv, COALESCE(u.full_name, '') AS assigned_to_dv, COALESCE(i.assigned_to, '') AS assigned_to
       FROM db1.it_incidents AS i
       JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid
+      JOIN db1.core_choices AS cc ON i.state = cc.value AND cc.element = 'state'
+      LEFT JOIN db1.users AS u ON i.assigned_to = u.uid
       ${queryString} ORDER BY i.created DESC`
     );
+
+
     console.log(`SELECT i.*, ag.name AS assignment_group_dv
     FROM db1.it_incidents AS i
     JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid

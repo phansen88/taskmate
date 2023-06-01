@@ -142,7 +142,7 @@ export default function IncidentManagement() {
                     <tr key={incident.uid}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <div className="text-sm font-medium text-gray-900">
-                          {incident.number}
+                          <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_incidents/${incident.uid}`}>{incident.number}</Link>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -167,7 +167,7 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {incident.state}
+                              {incident.state} {incident.state_dv}
                             </div>
                           </div>
                         </div>
@@ -176,7 +176,7 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${incident.assigned_to}`}>{incident.assigned_to}</Link>
+                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${incident.assigned_to}`}>{incident.assigned_to_dv}</Link>
                             </div>
                           </div>
                         </div>
