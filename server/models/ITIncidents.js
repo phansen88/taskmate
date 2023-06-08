@@ -33,12 +33,12 @@ async function getIncidents(query) {
         .map((k) => {
           if (k[1] === 'ISNULL') {
             // eslint-disable-next-line prefer-template
-            return "i." + k[0] + ' IS NULL';
+            return "inc." + k[0] + ' IS NULL';
           }
           // eslint-disable-next-line prefer-template
-          return "i." + k[0] + ` = '` + k[1] + `'`;
+          return "inc." + k[0] + ` = '` + k[1] + `'`;
         })
-        .join(`' AND i.`);
+        .join(`' AND inc.`);
 
       queryString = `WHERE ${queryString}`;
     }
@@ -46,19 +46,21 @@ async function getIncidents(query) {
 
     client = await pool.connect();
     const data = await client.query(
-      `SELECT i.*, ag.name AS assignment_group_dv, cc.label AS state_dv, COALESCE(u.full_name, '') AS assigned_to_dv, COALESCE(i.assigned_to, '') AS assigned_to
-      FROM db1.it_incidents AS i
-      JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid
-      JOIN db1.core_choices AS cc ON i.state = cc.value AND cc.element = 'state'
-      LEFT JOIN db1.users AS u ON i.assigned_to = u.uid
-      ${queryString} ORDER BY i.created DESC`
+      `SELECT inc.*, ag.name AS assignment_group_dv, cc.label AS state_dv, COALESCE(usr.full_name, '') AS assigned_to_dv, COALESCE(inc.assigned_to, '') AS assigned_to
+      FROM db1.it_incidents AS inc
+      JOIN db1.assignment_groups AS ag ON inc.assignment_group = ag.uid
+      JOIN db1.core_choices AS cc ON inc.state = cc.value AND cc.element = 'state' AND cc.table_name = 'it_incidents'
+      LEFT JOIN db1.users AS usr ON inc.assigned_to = usr.uid
+      ${queryString} ORDER BY inc.created DESC`
     );
 
 
-    console.log(`SELECT i.*, ag.name AS assignment_group_dv
-    FROM db1.it_incidents AS i
-    JOIN db1.assignment_groups AS ag ON i.assignment_group = ag.uid
-    ${queryString} ORDER BY i.created DESC`);
+    console.log(`SELECT inc.*, ag.name AS assignment_group_dv, cc.label AS state_dv, COALESCE(usr.full_name, '') AS assigned_to_dv, COALESCE(inc.assigned_to, '') AS assigned_to
+    FROM db1.it_incidents AS inc
+    JOIN db1.assignment_groups AS ag ON inc.assignment_group = ag.uid
+    JOIN db1.core_choices AS cc ON inc.state = cc.value AND cc.element = 'state' AND cc.table_name = 'it_incidents'
+    LEFT JOIN db1.users AS usr ON inc.assigned_to = usr.uid
+    ${queryString} ORDER BY inc.created DESC`);
     return data.rows;
   } catch (err) {
     console.log(err);

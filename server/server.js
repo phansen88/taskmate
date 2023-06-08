@@ -7,11 +7,12 @@ const helmet = require('helmet');
 const axios = require('axios').default;
 const wsseTEst = require('./middleware/wsse-test');
 const Users = require('./models/Users');
-const Incident = require('./models/Incident');
+const Incident = require('./models/ITIncidents');
 const Problems = require('./models/ITProblems');
 const UIModules = require('./models/UIModules');
 const Admin = require('./models/Admin');
 const AssignmentGroups = require('./models/AssignmentGroups');
+const DBUtil = require('./models/DBUtils');
 
 const app = express(); // create express app
 const port = process.env.PORT || 5000;
@@ -23,6 +24,25 @@ app.use(cors());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '.../build')));
 }
+
+app.get('/api/sessions', async (req, res) => {
+  // res.set('Access-Control-Allow-Origin', '*');
+  try {
+    const data = await DBUtil.getSessions();
+    res.send(data);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
+app.get('/api/slowqueries', async (req, res) => {
+  // res.set('Access-Control-Allow-Origin', '*');
+  try {
+    const data = await DBUtil.getSlowSQLQueries();
+    res.send(data);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 app.get('/api/assignment_groups', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {
@@ -53,13 +73,41 @@ app.get('/api/it_problems', async (req, res) => {
 
 app.get('/api/table/:tablename', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
+  const { tablename } = req.params;
+
   try {
-    const data = await Incident.getIncidents(req.query);
+    // Dynamically find the corresponding model method
+    const modelMethod = getModelMethod(tablename);
+
+    // Call the model method with the request query parameters
+    const data = await modelMethod(req.query);
+
     res.send(data);
   } catch (error) {
     res.status(500).send();
   }
 });
+
+
+// Helper function to get the corresponding model method based on the tablename
+function getModelMethod(tablename) {
+  
+  // Map of the tablename to the corresponding model method
+  const modelMethods = {
+    it_incidents: Incident.getIncidents,
+    it_problems: Problems.getITProblems,
+  };
+
+  // Get the corresponding model method based on the tablename
+  const modelMethod = modelMethods[tablename];
+
+  if (!modelMethod) {
+    throw new Error('Invalid tablename');
+  }
+
+  return modelMethod;
+}
+
 app.get('/api/users', async (req, res) => {
   // res.set('Access-Control-Allow-Origin', '*');
   try {

@@ -37,15 +37,6 @@ const UserForm = () => {
         <div className="grid grid-cols-2 gap-6">
             <div>
                 <div className="mb-4">
-                    <img src={user.photo} alt="User" className="h-64 w-64 object-cover" />
-                </div>
-                <div className="flex space-x-2">
-                    <a href="#" className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Upload</a>
-                    <a href="#" className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Delete</a>
-                </div>
-            </div>
-            <div>
-                <div className="mb-4">
                     <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
                         First Name
                     </label>
@@ -118,6 +109,15 @@ const UserForm = () => {
                         value={user.email}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
+                </div>
+            </div>
+            <div>
+                <div className="mb-4">
+                    <img src={user.photo} alt="User" className="h-64 w-64 object-cover" />
+                </div>
+                <div className="flex space-x-2">
+                    <a href="#" className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Upload</a>
+                    <a href="#" className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Delete</a>
                 </div>
             </div>
         </div>

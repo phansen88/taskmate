@@ -1,7 +1,7 @@
 /* eslint-disable no-else-return */
 const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 import { useEffect, useState } from 'react';
-import { useSearchParams, Outlet } from 'react-router-dom';
+import { Link, useSearchParams, Outlet } from 'react-router-dom';
 import moment from 'moment';
 /* This example requires Tailwind CSS v2.0+ */
 
@@ -66,7 +66,7 @@ export default function ITProblems() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       // eslint-disable-next-line no-template-curly-in-string,
       const response = await fetch(
-        `${API_ENDPOINT}/api/it_problems${query}`,
+        `${API_ENDPOINT}/api/table/it_problems${query}`,
         {
           mode: 'cors',
         }
@@ -142,7 +142,7 @@ export default function ITProblems() {
                     <tr key={problem.uid}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <div className="text-sm font-medium text-gray-900">
-                          {problem.number}
+                          <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_problems/${problem.uid}`}>{problem.number}</Link>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -161,7 +161,7 @@ export default function ITProblems() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {problem.description}
+                              {problem.state_dv}
                             </div>
                           </div>
                         </div>
@@ -170,7 +170,7 @@ export default function ITProblems() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {problem.assigned_to}
+                              {problem.workaround}
                             </div>
                           </div>
                         </div>
@@ -179,17 +179,14 @@ export default function ITProblems() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {problem.assignment_group}
+                            <Link className="text-indigo-600 hover:text-indigo-900" to={`/assignment_groups/${problem.assignment_group}`}>{problem.assignment_group_dv}</Link>
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {problem.sensitiveData ? 'Sensitive' : ''}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          
+                          <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${problem.assigned_to}`}>{problem.assigned_to_dv}</Link>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -200,12 +197,7 @@ export default function ITProblems() {
                             : ''}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a
-                          href="/"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit
-                        </a>
+                        <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_problems/${problem.uid}`}>Edit</Link>
                       </td>
                     </tr>
                   ))}

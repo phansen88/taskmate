@@ -34,12 +34,12 @@ async function getITProblems(query) {
           console.log(k[1]);
           if (k[1] === 'ISNULL') {
             // eslint-disable-next-line prefer-template
-            return k[0] + ' IS NULL';
+            return "prb." + k[0] + ' IS NULL';
           }
           // eslint-disable-next-line prefer-template
-          return k[0] + ` = '` + k[1] + `'`;
+          return "prb." + k[0] + ` = '` + k[1] + `'`;
         })
-        .join(`' AND `);
+        .join(`' AND prb.`);
 
       queryString = `WHERE ${queryString}`;
     }
@@ -47,7 +47,12 @@ async function getITProblems(query) {
 
     client = await pool.connect();
     const data = await client.query(
-      `SELECT * FROM db1.it_problems ${queryString} ORDER BY created DESC`
+      `SELECT prb.*, ag.name AS assignment_group_dv, cc.label AS state_dv, COALESCE(usr.full_name, '') AS assigned_to_dv, COALESCE(prb.assigned_to, '') AS assigned_to
+      FROM db1.it_problems AS prb
+      JOIN db1.assignment_groups AS ag ON prb.assignment_group = ag.uid
+      JOIN db1.core_choices AS cc ON prb.state = cc.value AND cc.element = 'state' AND cc.table_name = 'it_problems'
+      LEFT JOIN db1.users AS usr ON prb.assigned_to = usr.uid
+      ${queryString} ORDER BY prb.created DESC`
     );
     return data.rows;
   } catch (err) {

@@ -66,7 +66,7 @@ export default function IncidentManagement() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       // eslint-disable-next-line no-template-curly-in-string,
       const response = await fetch(
-        `${API_ENDPOINT}/api/table/incident${query}`,
+        `${API_ENDPOINT}/api/table/it_incidents${query}`,
         {
           mode: 'cors',
         }
@@ -185,7 +185,7 @@ export default function IncidentManagement() {
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm text-gray-500">
-                              {incident.assignment_group_dv}
+                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/assignment_groups/${incident.assignment_group}`}>{incident.assignment_group_dv}</Link>
                             </div>
                           </div>
                         </div>

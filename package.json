@@ -13,10 +13,14 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
+    "@robloche/chartjs-plugin-streaming": "^3.1.0",
     "@tailwindcss/forms": "^0.5.3",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
+    "chart.js": "^4.3.0",
+    "chartjs-adapter-date-fns": "^3.0.0",
     "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
@@ -24,6 +28,7 @@
     "path": "^0.12.7",
     "pg": "^8.11.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "wsse": "^6.0.0"

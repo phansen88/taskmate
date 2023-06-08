@@ -8,6 +8,7 @@ import Users from './pages/users';
 import ITProblems from './pages/it_problems';
 import AssignmentGroups from './pages/assignment_groups';
 import UserForm from './pages/users/form';
+import AdminPage from './pages/admin';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
             <Route exact index element={<CaseFiles />} />
           </Route>
           <Route path="/it_problems/*" element={<ITProblems />} />
+          <Route path="/admin/dictionary/*" element={<AdminPage />} />
         </Route>
       </Routes>
     </Router>
