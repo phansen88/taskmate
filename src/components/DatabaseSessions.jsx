@@ -12,6 +12,7 @@ import {
   TimeScale,
 } from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
+import 'chartjs-adapter-date-fns'; // Import the date-fns adapter
 
 ChartJS.register(
   CategoryScale,
