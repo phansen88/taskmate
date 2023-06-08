@@ -1,10 +1,8 @@
 /* eslint-disable no-else-return */
-const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
-import { useEffect, useState } from 'react';
-import { Link, useSearchParams, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import DatabaseSessionsChart from '../../components/DatabaseSessions';
 import BarChart from '../../components/BarChart';
-
+const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 
 
 export default function AdminPage() {
