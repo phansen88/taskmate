@@ -1,7 +1,7 @@
 /* eslint-disable no-else-return */
 import React, { useState, useEffect } from 'react';
 import DatabaseSessionsChart from '../../components/DatabaseSessions';
-//import BarChart from '../../components/BarChart';
+import BarChart from '../../components/BarChart';
 const API_ENDPOINT = import.meta.env.VITE_API_END_POINT;
 
 
@@ -82,7 +82,7 @@ export default function AdminPage() {
                                     <DatabaseSessionsChart />
                                 </div>
                                 <div className="bg-white shadow-lg p-4">
-                                <h2>soon.jpg</h2>
+                                    <BarChart data={slowQueriesData} options={chartOptions} isLoading={loading} hasError={error} />
                                 </div>
                                 <div className="bg-white shadow-lg p-4">
                                     <h2>soon.jpg</h2>
