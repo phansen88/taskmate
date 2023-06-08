@@ -5,12 +5,12 @@
     width: 6em;
     height: 6em;
     border-radius: 50%;
-    background: #4338ca;
-    background: -moz-linear-gradient(left, #4338ca 10%, rgba(255, 255, 255, 0) 42%);
-    background: -webkit-linear-gradient(left, #4338ca 10%, rgba(255, 255, 255, 0) 42%);
-    background: -o-linear-gradient(left, #4338ca 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, #4338ca 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, #4338ca 10%, rgba(255, 255, 255, 0) 42%);
+    background: #b163a3;
+    background: -moz-linear-gradient(left, #b163a3 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, #b163a3 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, #b163a3 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, #b163a3 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, #b163a3 10%, rgba(255, 255, 255, 0) 42%);
     position: relative;
     -webkit-animation: simple-loader-anim 1.4s infinite linear;
     animation: simple-loader-anim 1.4s infinite linear;
@@ -21,7 +21,7 @@
   .simple-loader:before {
     width: 50%;
     height: 50%;
-    background: #4338ca;
+    background: #b163a3;
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
@@ -29,7 +29,7 @@
     content: '';
   }
   .simple-loader:after {
-    background: #F3F4F6;
+    background: #FFF;
     width: 75%;
     height: 75%;
     border-radius: 50%;
