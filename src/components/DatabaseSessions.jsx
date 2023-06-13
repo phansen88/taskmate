@@ -125,9 +125,15 @@ const highestNumber = Math.max(...totalSessions.map(session => session.y)) || de
   let chartOptions = {
     animations: animation,
     responsive: true,
+    datasets: {
+      line: {
+        tension: 0.2,
+      }
+    },
     plugins: {
       legend: {
-        position: 'top',
+        position: 'bottom',
+        align: 'end',
       },
     },
     interaction: {
@@ -146,6 +152,7 @@ const highestNumber = Math.max(...totalSessions.map(session => session.y)) || de
         },
         min: getMinX,
         max: getMaxX,
+        
       },
       y: {
         type: 'linear',
@@ -198,7 +205,7 @@ const chartUpdate = (chart, totalSessions, activeSessions, idleSessions, labels)
     chart.data.datasets[1].data = activeSessions;
     chart.data.datasets[2].data = idleSessions;
     chart.data.labels = labels;
-    chart.update();
+    chart.update('none');
   }
 
 };

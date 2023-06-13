@@ -77,7 +77,7 @@ export default function AssignmentGroups() {
                                                     <span className="sr-only">Select</span>
                                                     <input
                                                         type="checkbox"
-                                                        className="rounded text-indigo-600 focus:ring-indigo-500 h-4 w-4"
+                                                        className="rounded text-orchid-700 focus:ring-orchid-600 h-4 w-4"
                                                         checked={selectedItems.length === assignment_groups.length}
                                                         onChange={handleSelectAll}
                                                     />
@@ -103,13 +103,13 @@ export default function AssignmentGroups() {
                                                         <input type="checkbox"
                                                             checked={selectedItems.includes(assignment_group.uid)}
                                                             onChange={(event) => handleCheckboxChange(event, assignment_group.uid)}
-                                                            className="rounded text-indigo-600 focus:ring-indigo-500 h-4 w-4" />
+                                                            className="rounded text-orchid-700 focus:ring-orchid-600 h-4 w-4" />
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="text-sm text-gray-900">{assignment_group.name}</div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <div className="text-sm text-gray-900"><Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${assignment_group.manager}`}>{assignment_group.manager_dv}</Link></div>
+                                                        <div className="text-sm text-gray-900"><Link className="text-orchid-700 hover:text-orchid-950" to={`/users/${assignment_group.manager}`}>{assignment_group.manager_dv}</Link></div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="text-sm text-gray-900">{assignment_group.email}</div>

@@ -125,13 +125,19 @@ export default function IncidentManagement() {
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Assigned to
-                        </th>
+                            Assigned to
+                          </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
                           Assignment group
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          SLA
                         </th>
                         <th
                           scope="col"
@@ -149,7 +155,7 @@ export default function IncidentManagement() {
                         <tr key={incident.uid}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <div className="text-sm font-medium text-gray-900">
-                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_incidents/${incident.uid}`}>{incident.number}</Link>
+                              <Link className="text-orchid-700 hover:text-orchid-950" to={`/it_incidents/${incident.uid}`}>{incident.number}</Link>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -183,7 +189,7 @@ export default function IncidentManagement() {
                             <div className="flex items-center">
                               <div className="ml-4">
                                 <div className="text-sm text-gray-500">
-                                  <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${incident.assigned_to}`}>{incident.assigned_to_dv}</Link>
+                                  <Link className="text-orchid-700 hover:text-orchid-950" to={`/users/${incident.assigned_to}`}>{incident.assigned_to_dv}</Link>
                                 </div>
                               </div>
                             </div>
@@ -192,10 +198,19 @@ export default function IncidentManagement() {
                             <div className="flex items-center">
                               <div className="ml-4">
                                 <div className="text-sm text-gray-500">
-                                  <Link className="text-indigo-600 hover:text-indigo-900" to={`/assignment_groups/${incident.assignment_group}`}>{incident.assignment_group_dv}</Link>
+                                  <Link className="text-orchid-700 hover:text-orchid-950" to={`/assignment_groups/${incident.assignment_group}`}>{incident.assignment_group_dv}</Link>
                                 </div>
                               </div>
                             </div>
+                          </td>
+                          <td className="px-6 py-4 align-middle text-xs whitespace-nowrap p-4">
+                            <div className="flex items-center">
+                              <div className="relative w-full">
+                                <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                  <div className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500" style={{width: '60%'}}></div>
+                                  </div>
+                                </div>
+                              </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
@@ -210,7 +225,7 @@ export default function IncidentManagement() {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_incidents/${incident.uid}`}>Edit</Link>
+                            <Link className="text-orchid-700 hover:text-orchid-950" to={`/it_incidents/${incident.uid}`}>Edit</Link>
                           </td>
                         </tr>
                       ))}

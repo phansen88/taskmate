@@ -52,7 +52,7 @@ const UserForm = () => {
                                 id="first_name"
                                 name="first_name"
                                 value={user.first_name}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             />
                         </div>
                         <div className="mb-4">
@@ -64,7 +64,7 @@ const UserForm = () => {
                                 id="last_name"
                                 name="last_name"
                                 value={user.last_name}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             />
                         </div>
                         <div className="mb-4">
@@ -75,7 +75,7 @@ const UserForm = () => {
                                 id="active"
                                 name="active"
                                 value={user.active}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             >
                                 <option value={true}>Active</option>
                                 <option value={false}>Inactive</option>
@@ -90,7 +90,7 @@ const UserForm = () => {
                                 id="title"
                                 name="title"
                                 value={user.title}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             />
                         </div>
                         <div className="mb-4">
@@ -102,7 +102,7 @@ const UserForm = () => {
                                 id="role"
                                 name="role"
                                 value={user.role}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             />
                         </div>
                         <div className="mb-4">
@@ -114,7 +114,7 @@ const UserForm = () => {
                                 id="email"
                                 name="email"
                                 value={user.email}
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                className="mt-1 focus:ring-orchid-600 focus:border-orchid-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             />
                         </div>
                     </div>

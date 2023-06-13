@@ -2,6 +2,10 @@ import React from 'react';
 
 const BenefitsPage = () => {
   return (
+    <div className='px-4 md:px-10 mx-auto w-full -m-24'>
+      <div className='flex flex-wrap mt-4'>
+        <div className='w-full mb-12 px-4'>
+          <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white'>
     <div className="py-6">
       <div className="mx-auto px-4 sm:px-6 md:px-8">
         <h4 className="text-sm uppercase hidden lg:inline-block font-semibold text-gray-900 py-4">
@@ -43,6 +47,10 @@ const BenefitsPage = () => {
           </div>
         </div>
       </div>
+      </div>
+      </div>
+      </div>
+    </div>
     </div>
   );
 };

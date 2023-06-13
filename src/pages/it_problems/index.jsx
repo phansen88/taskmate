@@ -149,7 +149,7 @@ export default function ITProblems() {
                         <tr key={problem.uid}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <div className="text-sm font-medium text-gray-900">
-                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_problems/${problem.uid}`}>{problem.number}</Link>
+                              <Link className="text-orchid-700 hover:text-orchid-950" to={`/it_problems/${problem.uid}`}>{problem.number}</Link>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -186,14 +186,14 @@ export default function ITProblems() {
                             <div className="flex items-center">
                               <div className="ml-4">
                                 <div className="text-sm text-gray-500">
-                                  <Link className="text-indigo-600 hover:text-indigo-900" to={`/assignment_groups/${problem.assignment_group}`}>{problem.assignment_group_dv}</Link>
+                                  <Link className="text-orchid-700 hover:text-orchid-950" to={`/assignment_groups/${problem.assignment_group}`}>{problem.assignment_group_dv}</Link>
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
-                              <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${problem.assigned_to}`}>{problem.assigned_to_dv}</Link>
+                              <Link className="text-orchid-700 hover:text-orchid-950" to={`/users/${problem.assigned_to}`}>{problem.assigned_to_dv}</Link>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -204,7 +204,7 @@ export default function ITProblems() {
                               : ''}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link className="text-indigo-600 hover:text-indigo-900" to={`/it_problems/${problem.uid}`}>Edit</Link>
+                            <Link className="text-orchid-700 hover:text-orchid-950" to={`/it_problems/${problem.uid}`}>Edit</Link>
                           </td>
                         </tr>
                       ))}

@@ -269,7 +269,7 @@ export default function Example() {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
-                                  className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                  className="h-4 w-4 border-gray-300 rounded text-orchid-700 focus:ring-orchid-900"
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}

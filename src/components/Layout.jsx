@@ -18,6 +18,7 @@ import {
 import DynamicHeroIcon from './DynamicHeroIcon';
 import '../css/simple-loader.css';
 import '../css/App.css'; // tailwind
+import { ReactComponent as Logo } from "../img/taskmate_logo-svg.svg";
 
 const userNavigation = [
   { title: 'Your Profile', uid: 'abc', href: '#' },
@@ -97,7 +98,7 @@ export default function Layout() {
               <div className="flex-shrink-0 flex items-center px-4">
                 <img
                   className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
+                  src=""
                   alt="Workflow"
                 />
               </div>
@@ -139,11 +140,7 @@ export default function Layout() {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow pt-5 bg-orchid-700 overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
-              alt="Workflow"
-            />
+            <Logo className="h-8 w-auto" />
           </div>
           <div className="mt-5 flex-1 flex flex-col">
             <nav className="flex-1 px-2 space-y-1" aria-label="Sidebar">
@@ -194,7 +191,7 @@ export default function Layout() {
                             item.current
                               ? 'bg-orchid-600 text-white'
                               : 'text-orchid-100 hover:bg-orchid-600',
-                            'group w-full flex items-center px-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-200'
+                            'group w-full flex items-center px-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-orchid-300-200'
                           )}
                         >
                           <DynamicHeroIcon
@@ -259,7 +256,7 @@ export default function Layout() {
         <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
           <button
             type="button"
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orchid-600 md:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>
@@ -288,7 +285,7 @@ export default function Layout() {
             <div className="ml-4 flex items-center md:ml-6">
               <button
                 type="button"
-                className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orchid-600"
               >
                 <span className="sr-only">View notifications</span>
                 <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -297,7 +294,7 @@ export default function Layout() {
               {/* Profile dropdown */}
               <Menu as="div" className="ml-3 relative">
                 <div>
-                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orchid-600">
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"

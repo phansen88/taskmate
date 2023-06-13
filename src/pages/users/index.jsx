@@ -137,7 +137,7 @@ export default function Users() {
                             {user.role}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link className="text-indigo-600 hover:text-indigo-900" to={`/users/${user.uid}`}>Edit</Link>
+                            <Link className="text-orchid-700 hover:text-orchid-950" to={`/users/${user.uid}`}>Edit</Link>
                           </td>
                         </tr>
                       ))}

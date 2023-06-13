@@ -22,7 +22,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Landingpage />} />
+          <Route index element={<AdminPage />} />
           <Route path="/users/*" element={<Users />} />
           <Route path="/users/:uid/*" element={<UserForm />} />
           <Route path="/table/:incident/*" element={<IncidentManagement />} />
